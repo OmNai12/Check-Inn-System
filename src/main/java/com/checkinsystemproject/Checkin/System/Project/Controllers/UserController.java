@@ -1,9 +1,13 @@
 package com.checkinsystemproject.Checkin.System.Project.Controllers;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+// Java imports
 import java.util.List;
 
+// Spring imports
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+// Project imports
 import com.checkinsystemproject.Checkin.System.Project.Models.User;
 import com.checkinsystemproject.Checkin.System.Project.Services.UserService;
 
