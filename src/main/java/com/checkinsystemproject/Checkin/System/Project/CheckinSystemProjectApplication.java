@@ -10,5 +10,4 @@ public class CheckinSystemProjectApplication {
 		SpringApplication.run(CheckinSystemProjectApplication.class, args);
 		System.out.println("Checkin System Project is running....");
 	}
-
 }
