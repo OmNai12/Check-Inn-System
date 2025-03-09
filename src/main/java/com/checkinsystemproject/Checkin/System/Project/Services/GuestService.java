@@ -4,8 +4,8 @@ package com.checkinsystemproject.Checkin.System.Project.Services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.checkinsystemproject.Checkin.System.Project.Models.Guest;
 // Project Imports
+import com.checkinsystemproject.Checkin.System.Project.Models.Guest;
 import com.checkinsystemproject.Checkin.System.Project.Repository.GuestRepository;
 
 @Service
@@ -14,13 +14,12 @@ public class GuestService {
     @Autowired
     private GuestRepository guestRepository;
 
-    public String createGuest(Guest guest) {
+    public Guest createGuest(Guest guest) {
         try {
-            System.out.println("GuestService: " + guest);
-            guestRepository.save(guest);
-            return "Guest created successfully";
+            Guest savedGuest = guestRepository.save(guest);
+            return savedGuest;
         } catch (Exception e) {
-            return "Error creating guest: " + e.getMessage();
+            return null;
         }
     }
 
