@@ -1,5 +1,8 @@
 package com.checkinsystemproject.Checkin.System.Project.Services;
 
+// Java Imports
+import java.util.List;
+
 // Spring Imports
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,6 +21,14 @@ public class GuestService {
         try {
             Guest savedGuest = guestRepository.save(guest);
             return savedGuest;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    public List<Guest> GetAllGuests(){
+        try {
+            return guestRepository.findAll();
         } catch (Exception e) {
             return null;
         }

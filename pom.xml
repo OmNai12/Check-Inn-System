@@ -78,6 +78,8 @@
 	</dependencies>
 
 	<build>
+	<!-- This is the targeted name for the purpose of the final build name -->
+	<finalName>Check-Inn-System</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
