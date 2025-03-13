@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd">
+
+    <changeSet id="002" author="yourname">
+        <createTable tableName="rooms">
+            <column name="id" type="UUID">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="room_number" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="room_type" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="price" type="FLOAT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <!-- Add Unique Constraint separately -->
+        <addUniqueConstraint tableName="rooms" columnNames="room_number" constraintName="uq_room_number"/>
+    </changeSet>
+
+</databaseChangeLog>

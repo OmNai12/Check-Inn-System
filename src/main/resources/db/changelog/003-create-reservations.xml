@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd">
+
+    <changeSet id="003" author="yourname">
+        <createTable tableName="reservations">
+            <column name="reservation_id" type="BIGSERIAL">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="guest_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="room_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="check_in_date" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="check_out_date" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_at" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <!-- Foreign Key Constraints should be outside createTable -->
+        <addForeignKeyConstraint 
+            baseTableName="reservations" baseColumnNames="guest_id"
+            referencedTableName="guest" referencedColumnNames="id"
+            constraintName="fk_reservation_guest"/>
+
+        <addForeignKeyConstraint 
+            baseTableName="reservations" baseColumnNames="room_id"
+            referencedTableName="rooms" referencedColumnNames="id"
+            constraintName="fk_reservation_room"/>
+    </changeSet>
+
+</databaseChangeLog>
