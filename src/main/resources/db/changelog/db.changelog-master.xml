@@ -9,5 +9,6 @@
     <include file="db/changelog/002-create-room.xml"/>
     <include file="db/changelog/003-create-reservations.xml"/>
     <include file="db/changelog/004-create-payment.xml"/>
-
+    <include file="db/changelog/006-create-clientProperty.xml"/>
+    <include file="db/changelog/007-composite-index-on-reservation-table.xml"/>
 </databaseChangeLog>

@@ -10,21 +10,24 @@ import lombok.NoArgsConstructor;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "Reservations")
+@Table(name = "Reservations", 
+indexes = {
+    @Index(name = "idx_checkin_checkout", columnList = "checkInDate, checkOutDate")
+})
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 public class Reservations {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long reservationID;
+    private Long reservation_id;
 
     @ManyToOne
-    @JoinColumn(name = "guestID", nullable = false)
+    @JoinColumn(name = "guest_id", nullable = false)
     private Guest guest;
 
     @ManyToOne
-    @JoinColumn(name = "roomID", nullable = false)
+    @JoinColumn(name = "room_id", nullable = false)
     private Room room;
 
     @Column(nullable = false)

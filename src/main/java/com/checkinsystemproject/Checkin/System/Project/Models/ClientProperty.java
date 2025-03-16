@@ -1,7 +1,7 @@
 package com.checkinsystemproject.Checkin.System.Project.Models;
 
+import java.sql.Blob;
 // Java Imports
-import java.time.LocalDateTime;
 import java.util.UUID;
 
 // Utlity Imports
@@ -10,47 +10,28 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table
+@Table(name = "client_property")
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class Guest {
-
+public class ClientProperty {
     @Id()
     @GeneratedValue(strategy = GenerationType.UUID)
     // @Column(updatable = false)
     private UUID id;
 
     @Column(nullable = false)
-    private String firstName;
+    private String PropertyName;
 
-    @Column(nullable = false)
-    private String lastName;
+    private Blob PropertyImage;
 
-    @Column(nullable = false)
-    private String govtId;
+    private int NumberOfrooms;
 
-    private String streetAddress;
-
-    private String city;
-
-    private String state;
-
-    private String zipCode;
-
-    @Column(nullable = false, updatable = false)
-    private LocalDateTime createdAt;
-
-    @PrePersist
-    protected void onCreate() {
-        this.createdAt = LocalDateTime.now();
-    }
-
+    private String AvailableRoomTypes;
 }

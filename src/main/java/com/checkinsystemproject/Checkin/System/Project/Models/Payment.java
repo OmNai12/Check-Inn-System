@@ -17,7 +17,7 @@ public class Payment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID paymentID;
+    private UUID payment_id;
 
     @Column(nullable = false)
     private float amount;
@@ -32,7 +32,7 @@ public class Payment {
     private LocalDateTime paymentDate;
 
     @OneToOne
-    @JoinColumn(name = "reservationID", nullable = false)
+    @JoinColumn(name = "reservation_id", nullable = false)
     private Reservations reservation;
 
     public enum PaymentMethod {
