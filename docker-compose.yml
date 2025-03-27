@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  app:
+    build: . # Assuming you have a Dockerfile in the current directory
+    image: my-java-app  # Replace with your built Java app image
+    container_name: my-java-app
+    depends_on:
+      - postgres
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/CheckInnSystemDB
+      - SPRING_DATASOURCE_USERNAME=ThisIsMySpaceToBeUsed
+      - SPRING_DATASOURCE_PASSWORD=TheNotHackablePassword#8238$TrustTheToolChain
+    ports:
+      - "8090:8090"
+
+  postgres:
+    image: postgres:latest
+    container_name: postgres-db
+    restart: always
+    environment:
+      POSTGRES_DB: CheckInnSystemDB
+      POSTGRES_USER: ThisIsMySpaceToBeUsed
+      POSTGRES_PASSWORD: TheNotHackablePassword#8238$TrustTheToolChain
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+networks:
+  default:
+    driver: bridge
+
+volumes:
+  postgres_data:
