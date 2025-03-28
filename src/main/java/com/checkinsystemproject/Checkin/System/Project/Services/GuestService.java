@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 // Project Imports
 import com.checkinsystemproject.Checkin.System.Project.Models.Guest;
 import com.checkinsystemproject.Checkin.System.Project.Repository.GuestRepository;
+import com.checkinsystemproject.Checkin.System.Project.Exceptions.GuestExceptions.GuestServiceExceptions;
 
 @Service
 public class GuestService {
@@ -22,7 +23,8 @@ public class GuestService {
             Guest savedGuest = guestRepository.save(guest);
             return savedGuest;
         } catch (Exception e) {
-            return null;
+            e.printStackTrace();
+            throw new GuestServiceExceptions("[GuestService][createGuest] : Error creating guest");
         }
     }
 
@@ -30,7 +32,8 @@ public class GuestService {
         try {
             return guestRepository.findAll();
         } catch (Exception e) {
-            return null;
+            e.printStackTrace();
+            throw new GuestServiceExceptions("[GuestService][GetAllGuests] : Error getting all guests");
         }
     }
 

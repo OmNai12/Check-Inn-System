@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.checkinsystemproject.Checkin.System.Project.Models.Guest;
 import com.checkinsystemproject.Checkin.System.Project.Services.GuestService;
 import org.springframework.web.bind.annotation.GetMapping;
+import com.checkinsystemproject.Checkin.System.Project.Exceptions.GuestExceptions.GuestControllerExceptions;
 
 @RestController
 public class GuestController {
@@ -22,13 +23,22 @@ public class GuestController {
 
     @PostMapping("/guest")
     public Guest createGuest(@RequestBody Guest guest) {
-        // System.out.println("GuestController: " + guest);
-        return guestService.createGuest(guest);
+        try {
+            return guestService.createGuest(guest);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new GuestControllerExceptions("[GuestController][createGuest] : Error creating guest");
+        }
     }
 
     @GetMapping("/getallguests")
     public List<Guest> getAllGuests() {
-        return guestService.GetAllGuests();
+        try {
+            return guestService.GetAllGuests();
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new GuestControllerExceptions("[GuestController][getAllGuests] : Error getting all guests");
+        }
     }
     
 }
