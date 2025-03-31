@@ -8,9 +8,9 @@ services:
     depends_on:
       - postgres
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/CheckInnSystemDB
-      - SPRING_DATASOURCE_USERNAME=ThisIsMySpaceToBeUsed
-      - SPRING_DATASOURCE_PASSWORD=TheNotHackablePassword#8238$TrustTheToolChain
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/CheckInnSystem1
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=diya1234
     ports:
       - "8090:8090"
 
@@ -19,9 +19,9 @@ services:
     container_name: postgres-db
     restart: always
     environment:
-      POSTGRES_DB: CheckInnSystemDB
-      POSTGRES_USER: ThisIsMySpaceToBeUsed
-      POSTGRES_PASSWORD: TheNotHackablePassword#8238$TrustTheToolChain
+      POSTGRES_DB: CheckInnSystem1
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: diya1234
     ports:
       - "5433:5432"
     volumes:

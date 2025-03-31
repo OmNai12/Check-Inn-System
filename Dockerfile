@@ -1,5 +1,5 @@
 # Use Amazon Corretto 21 as the base image this will serve the jdk
-FROM amazoncorretto:21
+FROM amazoncorretto:20
 
 # Set the working directory inside the container
 WORKDIR /app
